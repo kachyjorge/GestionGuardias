@@ -24,6 +24,12 @@ public class Pacientes {
     private String obra_social;
     private int tutores_dni_tutor;
   
+    Connection conexion; 
+    Statement sentencia;
+    ResultSet rsDatos;
+    PreparedStatement psPrepSencencias;
+            
+            
     public Pacientes(int dni_p, String nombre_pac, String apellido_pac, String domicilio_pac, String localidad, Date fecha, String sexo, String obra_social, int tutores_dni_tutor) {
         this.dni_p = dni_p;
         this.nombre_pac = nombre_pac;
@@ -150,21 +156,30 @@ try {
 }
 return rpta;
 } **/
-    public int InsertarContacto (String Nombre) throws SQLException
+    
+    
+    public int InsertarPaciente (int DNI) throws SQLException
     {
-    Statement sentencia;
-    ResultSet rsDatos;
-    PreparedStatement psPrepSencencias;
-    Conexion con = null;
         // Inserta un contacto y devuelve su id 
         try{
             // preparo la sentencia el parametro RETURN_GENERATED_KEYS debe ser especificado explicitamente
             // para poder obtener el ID del campo autoincrement
-            con = new Conexion();
-            psPrepSencencias = con.prepareStatement("insert into contactos (nombre) values (?)",
-                                                          PreparedStatement.RETURN_GENERATED_KEYS);
+            psPrepSencencias = conexion.prepareStatement("INSERT INTO Pacientes (dni_p, nombre_pac, apellido_pac, "
+                                                        + "domicilio_pac, localidad, fecha, sexo, Obra_social, tutores_dni_tutor)"
+                                                        + " VALUES (?,?,?,?,?,?,?,?,?);",
+                                                        PreparedStatement.RETURN_GENERATED_KEYS);
             // cargo parametros
-            psPrepSencencias.setString(1, Nombre);
+            //psPrepSencencias.setString(1, Nombre);
+            psPrepSencencias.setInt(1, getDni_p());
+            psPrepSencencias.setString(2, getNombre_pac());
+            psPrepSencencias.setString(3, getApellido_pac());
+            psPrepSencencias.setString(4, getDomicilio_pac());
+            psPrepSencencias.setString(5, getLocalidad());
+            psPrepSencencias.setDate(6,getFecha());
+            psPrepSencencias.setString(7, getSexo());
+            psPrepSencencias.setString(8, getObra_social());
+            psPrepSencencias.setInt(9, getTutores_dni_tutor());
+            //rpta = ps.executeUpdate() == 1;
             //ejecuto sentencia
             psPrepSencencias.executeUpdate();
             //obtengo el id del registro recien insertado
