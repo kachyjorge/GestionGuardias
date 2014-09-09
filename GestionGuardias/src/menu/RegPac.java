@@ -10,20 +10,40 @@
  */
 package menu;
 
-import javax.swing.JCheckBox;
+import ClasesBD.Conexion;
+import ClasesBD.Pacientes;
+import ClasesBD.Tutores;
+import java.sql.*;
+//import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+//import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author admin
+ * @author kachy
  */
 public class RegPac extends javax.swing.JFrame {
+    private int dni_p;
+    private String nomb_p;
+    private String ape_p;
+    private String domicilio_p;
+    private String localidad;
+    private Date fecha;
+    private String sexo;
+    private String obra_S;
+    private int dni_tutor;
+    private String nomb_t;
+    private String ape_t;
+    private int tel_t;
 
     /** Creates new form RegPac */
     public RegPac() {
         initComponents();
         grupo1.add(jRadioButton1);
         grupo1.add(jRadioButton2);
+        
     }
 
     /** This method is called from within the constructor to
@@ -129,18 +149,24 @@ private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 }//GEN-LAST:event_jButton2ActionPerformed
 
 private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
+        
+    Pacientes miP = new Pacientes(dni_p, nomb_p, ape_p, domicilio_p, localidad, fecha, sexo, obra_S, dni_tutor);
     
     if (jRadioButton1.isSelected()){
                 int documento= Integer.parseInt(this.jTFIngresarPaciente.getText());
                 this.jTFIngresarPaciente.setText("");
                 this.jTFIngresarPaciente.requestFocus();
-                                if (documento > 40000000 & documento < 45000000){
-                                    /*Aqui buscamos*/
-                                   // if (documento == )
+                                if (documento != miP.getDni_p())
+                                {
                                                     JOptionPane.showMessageDialog(rootPane, "El Paciente no Existe en el Registro","Registrar", WIDTH);
                                                     RegistrarPaciente reg = new RegistrarPaciente(documento);
                                                     reg.setVisible(true);
-                                                    
+                                    try {
+                                                miP.InsertarPaciente(documento);
+                                                //miT.InsertarTutor(dni_tutor);
+                                    } catch (SQLException ex) {
+                                                Logger.getLogger(RegPac.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
                                 }
                                 else{
                                             JOptionPane.showMessageDialog(rootPane, "El Paciente ya Existe en el Registro","Registrado", WIDTH);
@@ -211,4 +237,6 @@ private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JTextField jTFIngresarPaciente;
     // End of variables declaration//GEN-END:variables
+    
+    
 }

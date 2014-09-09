@@ -7,7 +7,8 @@
 package ClasesBD;
 
 import java.sql.*;
-import ClasesBD.Conexion;
+import menu.RegistrarPaciente;
+//import ClasesBD.Conexion;
 /**
  *
  * @author kachy
@@ -28,7 +29,7 @@ public class Pacientes {
     Statement sentencia;
     ResultSet rsDatos;
     PreparedStatement psPrepSencencias;
-            
+ 
             
     public Pacientes(int dni_p, String nombre_pac, String apellido_pac, String domicilio_pac, String localidad, Date fecha, String sexo, String obra_social, int tutores_dni_tutor) {
         this.dni_p = dni_p;
@@ -155,7 +156,8 @@ try {
     }
 }
 return rpta;
-} **/
+}
+     * @param DNI **/
     
     
     public int InsertarPaciente (int DNI) throws SQLException
@@ -164,7 +166,7 @@ return rpta;
         try{
             // preparo la sentencia el parametro RETURN_GENERATED_KEYS debe ser especificado explicitamente
             // para poder obtener el ID del campo autoincrement
-            psPrepSencencias = conexion.prepareStatement("INSERT INTO Pacientes (dni_p, nombre_pac, apellido_pac, "
+            psPrepSencencias = conexion.prepareStatement("INSERT INTO pacientes (dni_p, nombre_pac, apellido_pac, "
                                                         + "domicilio_pac, localidad, fecha, sexo, Obra_social, tutores_dni_tutor)"
                                                         + " VALUES (?,?,?,?,?,?,?,?,?);",
                                                         PreparedStatement.RETURN_GENERATED_KEYS);
@@ -175,7 +177,7 @@ return rpta;
             psPrepSencencias.setString(3, getApellido_pac());
             psPrepSencencias.setString(4, getDomicilio_pac());
             psPrepSencencias.setString(5, getLocalidad());
-            psPrepSencencias.setDate(6,getFecha());
+            psPrepSencencias.setDate(6, getFecha());
             psPrepSencencias.setString(7, getSexo());
             psPrepSencencias.setString(8, getObra_social());
             psPrepSencencias.setInt(9, getTutores_dni_tutor());
@@ -184,7 +186,7 @@ return rpta;
             psPrepSencencias.executeUpdate();
             //obtengo el id del registro recien insertado
             rsDatos = psPrepSencencias.getGeneratedKeys();
-             rsDatos.first();
+            rsDatos.first();
             return rsDatos.getInt(1);
             
         }catch(SQLException e) {
