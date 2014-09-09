@@ -285,7 +285,7 @@ public class RegistrarPaciente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-
+String d,m,a;
     Pacientes miP = new Pacientes(dni_p, nomb_p, ape_p, domicilio_p, localidad, fecha, sexo, obra_S, dni_tutor);
     Tutores miT = new Tutores(dni_tutor, nomb_t, ape_t, tel_t);
     try{
@@ -297,9 +297,9 @@ private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             pst.setString(4, jTDomicilio.getText());
             pst.setString(5, jCBLocalidad.getToolTipText());
             pst.setDate(6, jCBfechadia.getSelectedItem().toString());
-            
+        
         }catch(SQLException e) {
-            throw e;
+           throw e;
         }           
     JOptionPane.showMessageDialog(rootPane, "El Registro del Paciente se Genero CORRECTAMENTE", "Guardado", WIDTH);
 }//GEN-LAST:event_btnBuscarActionPerformed

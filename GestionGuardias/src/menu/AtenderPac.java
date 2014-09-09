@@ -10,6 +10,11 @@
  */
 package menu;
 
+import ClasesBD.Conexion;
+import ClasesBD.Pacientes;
+import java.sql.*;
+
+
 import javax.swing.JOptionPane;
 
 /**
@@ -17,7 +22,8 @@ import javax.swing.JOptionPane;
  * @author admin
  */
 public class AtenderPac extends javax.swing.JFrame {
-
+private int dni_p;
+private int dni_tutor;
     /** Creates new form AtenderPac */
     public AtenderPac() {
         initComponents();
@@ -50,7 +56,7 @@ public class AtenderPac extends javax.swing.JFrame {
 
         jRadioButton1.setText("DNI");
 
-        jLabel1.setText("Ingresar Documento Paciente");
+        jLabel1.setText("Ingresar Documento Paciente:");
 
         jRadioButton2.setText("cedula");
 
@@ -79,22 +85,22 @@ public class AtenderPac extends javax.swing.JFrame {
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(17, 17, 17)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jRadioButton2)
                     .addComponent(jRadioButton1))
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jRadioButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -128,16 +134,20 @@ public class AtenderPac extends javax.swing.JFrame {
 
 private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
+    Pacientes bPasiente = new Pacientes(dni_p, null, null, null, null, null, null, null, dni_tutor);
+    
     int documento= Integer.parseInt(this.jTextField1.getText());
     this.jTextField1.setText("");
     this.jTextField1.requestFocus();
-    if (documento > 40000000 ){
-                    JOptionPane.showMessageDialog(rootPane, "El Paciente esta Registrado","Mensaje", WIDTH);
+    if (documento != bPasiente.getDni_p()){
+                    //JOptionPane.showMessageDialog(rootPane, "El Paciente esta Registrado","Mensaje", WIDTH);
                     AtenderPaciente app = new AtenderPaciente();
                     app.setVisible(true);
     }
     else{
-        JOptionPane.showMessageDialog(rootPane, "El Paciente No Existe","Mensaje", WIDTH);
+        JOptionPane.showMessageDialog(rootPane, "El Paciente No Existe, dar el alta al finalizar la atencion","Mensaje", WIDTH);
+        AtenderPaciente app = new AtenderPaciente();
+        app.setVisible(true);
     }
     
 }//GEN-LAST:event_jButton1ActionPerformed
