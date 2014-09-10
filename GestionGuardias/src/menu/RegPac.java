@@ -10,9 +10,7 @@
  */
 package menu;
 
-import ClasesBD.Conexion;
-import ClasesBD.Pacientes;
-import ClasesBD.Tutores;
+import ClasesBD.*;
 import java.sql.*;
 //import java.sql.SQLException;
 import java.util.logging.Level;
@@ -151,9 +149,9 @@ private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
         
     Pacientes miP = new Pacientes(dni_p, nomb_p, ape_p, domicilio_p, localidad, fecha, sexo, obra_S, dni_tutor);
-    
+    int documento = 0;
     if (jRadioButton1.isSelected()){
-                int documento= Integer.parseInt(this.jTFIngresarPaciente.getText());
+                documento= Integer.parseInt(this.jTFIngresarPaciente.getText());
                 this.jTFIngresarPaciente.setText("");
                 this.jTFIngresarPaciente.requestFocus();
                                 if (documento != miP.getDni_p())
@@ -161,12 +159,12 @@ private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                                                     JOptionPane.showMessageDialog(rootPane, "El Paciente no Existe en el Registro","Registrar", WIDTH);
                                                     RegistrarPaciente reg = new RegistrarPaciente(documento);
                                                     reg.setVisible(true);
-                                    try {
+                                    /**try {
                                                 miP.InsertarPaciente(documento);
-                                                //miT.InsertarTutor(dni_tutor);
+                                                miT.InsertarTutor(dni_tutor);
                                     } catch (SQLException ex) {
                                                 Logger.getLogger(RegPac.class.getName()).log(Level.SEVERE, null, ex);
-                                    }
+                                    }**/
                                 }
                                 else{
                                             JOptionPane.showMessageDialog(rootPane, "El Paciente ya Existe en el Registro","Registrado", WIDTH);

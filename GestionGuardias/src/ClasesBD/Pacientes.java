@@ -6,8 +6,11 @@
 
 package ClasesBD;
 
+import static java.awt.image.ImageObserver.WIDTH;
 import java.sql.*;
+import javax.swing.JOptionPane;
 import menu.RegistrarPaciente;
+//import menu.RegistrarPaciente;
 //import ClasesBD.Conexion;
 /**
  *
@@ -30,7 +33,8 @@ public class Pacientes {
     ResultSet rsDatos;
     PreparedStatement psPrepSencencias;
  
-            
+    RegistrarPaciente reg = new RegistrarPaciente();
+    
     public Pacientes(int dni_p, String nombre_pac, String apellido_pac, String domicilio_pac, String localidad, Date fecha, String sexo, String obra_social, int tutores_dni_tutor) {
         this.dni_p = dni_p;
         this.nombre_pac = nombre_pac;
@@ -115,8 +119,42 @@ public class Pacientes {
         this.nombre_pac = nombre_pac;
     }
 
+  
+    public int cargar(int dni_p, String nombre_pac, String apellido_pac, String domicilio_pac, String localidad, String fecha, String sexo, String obra_social, int nro_afiliado) throws SQLException{
     
- 
+        PreparedStatement pst = conexion.prepareStatement("INSERT INTO pacientes (dni_p, nombre_pac, apellido_pac,domicilio_pac, localidad, fecha, sexo, Obra_social, nro_afiliado) VALUES (?,?,?,?,?,?,?,?,?)");
+        //PreparedStatement pstt = conexion.prepareStatement("INSERT INTO tutores (dni_tutor, nombre_t, apellido_t,tel_t) VALUES (?,?,?,?)");
+    
+        try{
+            
+            pst.setInt(1, dni_p);
+            pst.setString(2, nombre_pac);
+            pst.setString(3, apellido_pac);
+            pst.setString(4, domicilio_pac);
+            pst.setString(5, localidad);
+            pst.setString(6, fecha);
+            pst.setString(7, sexo);
+            pst.setString(8, obra_social);
+            //pstt.setString(9, jTdnit.getText());
+            pst.setInt(9, nro_afiliado);
+                        
+            pst.executeUpdate();
+            
+            rsDatos = psPrepSencencias.getGeneratedKeys();
+            rsDatos.first();
+            return rsDatos.getInt(1);
+            
+        }catch(SQLException e) {
+            throw e;
+        }           
+           
+       }
+    }
+
+
+
+
+
   /**Inser
      * @throws java.lang.Exceptiont**/
 
@@ -157,7 +195,7 @@ try {
 }
 return rpta;
 }
-     * @param DNI **/
+     * @param DNI 
     
     
     public int InsertarPaciente (int DNI) throws SQLException
@@ -191,12 +229,6 @@ return rpta;
             
         }catch(SQLException e) {
             throw e;
-        }           
+        }           **/
         
-    }
-    
-    
-    
-    
-    
-}
+   

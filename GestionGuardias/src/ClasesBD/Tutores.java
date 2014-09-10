@@ -69,21 +69,20 @@ public class Tutores {
         this.tel_t = tel_t;
     }
 
-    public int InsertarTutor (int DNI) throws SQLException
+    public int InsertarTutor (int dni_tutor, String nombre_t, String apellido_t, int tel_t) throws SQLException
     {
         // Inserta un contacto y devuelve su id 
         try{
             // preparo la sentencia el parametro RETURN_GENERATED_KEYS debe ser especificado explicitamente
             // para poder obtener el ID del campo autoincrement
-            psPrepSencencias = conexion.prepareStatement("INSERT INTO tutores (dni_tutor, nombre_t, apellido_t, "
-                                                        + "tel_t)" + " VALUES (?,?,?,?);",
+            psPrepSencencias = conexion.prepareStatement("INSERT INTO tutores (dni_tutor, nombre_t, apellido_t, tel_t)" + " VALUES (?,?,?,?);",
                                                         PreparedStatement.RETURN_GENERATED_KEYS);
             // cargo parametros
             //psPrepSencencias.setString(1, Nombre);
-            psPrepSencencias.setInt(1, getDni_tutor());
-            psPrepSencencias.setString(2, getNombre_t());
-            psPrepSencencias.setString(3, getApellido_t());
-            psPrepSencencias.setInt(4, getTel_t());
+            psPrepSencencias.setInt(1, dni_tutor);
+            psPrepSencencias.setString(2, nombre_t);
+            psPrepSencencias.setString(3, apellido_t);
+            psPrepSencencias.setInt(4, tel_t);
             //rpta = ps.executeUpdate() == 1;
             //ejecuto sentencia
             psPrepSencencias.executeUpdate();
