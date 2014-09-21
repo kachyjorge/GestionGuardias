@@ -89,7 +89,7 @@
                       <Component id="jLabel15" max="32767" attributes="1"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="jLabel11" alignment="0" max="32767" attributes="1"/>
+                              <Component id="jLNAfiliado" alignment="0" max="32767" attributes="1"/>
                               <Component id="jLabel10" pref="66" max="32767" attributes="1"/>
                               <Component id="jLabel9" max="32767" attributes="1"/>
                               <Component id="jLabel6" alignment="0" max="32767" attributes="1"/>
@@ -187,7 +187,7 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLNAfiliado" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTnum_Afiliado" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -230,6 +230,9 @@
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCBObraSocialActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel10">
           <Properties>
@@ -258,8 +261,16 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTnum_Afiliado">
+          <Properties>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor de Texto"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTnum_AfiliadoActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel11">
+        <Component class="javax.swing.JLabel" name="jLNAfiliado">
           <Properties>
             <Property name="text" type="java.lang.String" value="N&#xba; Afiliado"/>
           </Properties>

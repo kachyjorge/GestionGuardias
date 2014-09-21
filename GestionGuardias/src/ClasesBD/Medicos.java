@@ -6,6 +6,9 @@
 
 package ClasesBD;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import menu.*;
 /**
  *
  * @author kachy
@@ -13,36 +16,27 @@ import java.sql.*;
 public class Medicos {
 
        
-    private int cod_personal;
+    private int cod_medico;
     private String esp_medica;
     private String cargo_med;
     private String nombre_med;
     private String apellido_med;
     private String direccion_med;
+        
+    private Statement sentencia;
+    private ResultSet rsDatos;
+    private PreparedStatement psPrepSencencias;
+
+   
     
-    Connection conexion; 
-    Statement sentencia;
-    ResultSet rsDatos;
-    PreparedStatement psPrepSencencias;
-    
-    
-    public Medicos(int cod_personal, String esp_medica, String cargo_med, String nombre_med, String apellido_med, String direccion_med) {
-        this.cod_personal = cod_personal;
-        this.esp_medica = esp_medica;
-        this.cargo_med = cargo_med;
-        this.nombre_med = nombre_med;
-        this.apellido_med = apellido_med;
-        this.direccion_med = direccion_med;
-    }
-    
-    public int getCod_personal() {
-        return cod_personal;
+    public int getCod_medico() {
+        return cod_medico;
     }
 
-    public void setCod_personal(int cod_personal) {
-        this.cod_personal = cod_personal;
+    public void setCod_medico(int cod_medico) {
+        this.cod_medico = cod_medico;
     }
-
+    
     public String getEsp_medica() {
         return esp_medica;
     }
@@ -83,33 +77,36 @@ public class Medicos {
         this.direccion_med = direccion_med;
     }
 
-    
-    
-    public int Cargar_medico (String cod_med, String especialidad, String cargo, String nombre, String apellido, String direccion) throws SQLException
-    {
+   
+    public void InsertarMedico () throws SQLException
+    {       
         // Inserta un contacto y devuelve su id 
         try{
+            Connection cn = Conexion.Cadena();
             // preparo la sentencia el parametro RETURN_GENERATED_KEYS debe ser especificado explicitamente
             // para poder obtener el ID del campo autoincrement
-            psPrepSencencias = conexion.prepareStatement("INSERT INTO medicos (cod_personal, esp_medica, cargo_med, nombre_med, apellido_med, direcion_med) VALUES (?,?,?,?);", PreparedStatement.RETURN_GENERATED_KEYS);
+                   
+            psPrepSencencias = cn.prepareStatement("INSERT INTO medicos (cod_medico, esp_medica, cargo_med, nombre_med, apellido_med, direccion_med) VALUES (?,?,?,?,?,?);");
+                                                        //PreparedStatement.RETURN_GENERATED_KEYS);
             // cargo parametros
-            //psPrepSencencias.setString(1, cod_med);   NO ENTIENDO.. PREGUNTAR
-            psPrepSencencias.setString(2, especialidad);
-            psPrepSencencias.setString(3, cargo);
-            psPrepSencencias.setString(4, nombre);
-            psPrepSencencias.setString(5, apellido);
-            psPrepSencencias.setString(6, direccion);
-            
-            //rpta = ps.executeUpdate() == 1;
+                                  
+            psPrepSencencias.setInt(1, cod_medico);
+            psPrepSencencias.setString(2, esp_medica);
+            psPrepSencencias.setString(3, cargo_med);
+            psPrepSencencias.setString(4, nombre_med);
+            psPrepSencencias.setString(5, apellido_med);
+            psPrepSencencias.setString(6, direccion_med);
+           
             //ejecuto sentencia
             psPrepSencencias.executeUpdate();
-            //obtengo el id del registro recien insertado
-            rsDatos = psPrepSencencias.getGeneratedKeys();
-            rsDatos.first();
-            return rsDatos.getInt(1);
-            
+                      
         }catch(SQLException e) {
             throw e;
-        }           
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Medicos.class.getName()).log(Level.SEVERE, null, ex);
+       }           
     }
+    
+    
+    
 }

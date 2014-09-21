@@ -11,11 +11,11 @@
 package menu;
 
 import ClasesBD.*;
-import java.sql.*;
-//import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-//import javax.swing.JCheckBox;
+//import java.sql.*;
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,19 +23,7 @@ import javax.swing.JOptionPane;
  * @author kachy
  */
 public class RegPac extends javax.swing.JFrame {
-    private int dni_p;
-    private String nomb_p;
-    private String ape_p;
-    private String domicilio_p;
-    private String localidad;
-    private Date fecha;
-    private String sexo;
-    private String obra_S;
-    private int dni_tutor;
-    private String nomb_t;
-    private String ape_t;
-    private int tel_t;
-
+  
     /** Creates new form RegPac */
     public RegPac() {
         initComponents();
@@ -56,21 +44,41 @@ public class RegPac extends javax.swing.JFrame {
         jPopupMenu1 = new javax.swing.JPopupMenu();
         jPopupMenu2 = new javax.swing.JPopupMenu();
         grupo1 = new javax.swing.ButtonGroup();
-        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jTFIngresarPaciente = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jBBuscar = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jLabel1 = new javax.swing.JLabel();
+        jBBuscar = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Buscar Paciente");
 
-        jLabel1.setText("Ingresar Paciente");
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Ingresar DNI"));
 
         jTFIngresarPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFIngresarPacienteActionPerformed(evt);
+            }
+        });
+
+        jRadioButton2.setText("Apellido y Nombre");
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
+
+        jRadioButton1.setText("DNI");
+        jRadioButton1.setFocusable(false);
+
+        jLabel1.setText("Ingresar Paciente");
+
+        jBBuscar.setText("Buscar");
+        jBBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBBuscarActionPerformed(evt);
             }
         });
 
@@ -81,61 +89,62 @@ public class RegPac extends javax.swing.JFrame {
             }
         });
 
-        jBBuscar.setText("Buscar");
-        jBBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBBuscarActionPerformed(evt);
-            }
-        });
-
-        jRadioButton1.setText("DNI");
-        jRadioButton1.setFocusable(false);
-
-        jRadioButton2.setText("Apellido y Nombre");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
-            }
-        });
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jRadioButton2)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jRadioButton1)
+                        .addGap(81, 81, 81)
+                        .addComponent(jTFIngresarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(61, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(76, 76, 76)
+                .addComponent(jBBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(102, 102, 102))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jRadioButton1)
+                            .addComponent(jTFIngresarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jRadioButton2)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jBBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(33, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTFIngresarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(jBBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton1))
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTFIngresarPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jRadioButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButton2)))
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -148,33 +157,55 @@ private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
 
 private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
         
-    Pacientes miP = new Pacientes(dni_p, nomb_p, ape_p, domicilio_p, localidad, fecha, sexo, obra_S, dni_tutor);
-    int documento = 0;
-    if (jRadioButton1.isSelected()){
-                documento= Integer.parseInt(this.jTFIngresarPaciente.getText());
-                this.jTFIngresarPaciente.setText("");
-                this.jTFIngresarPaciente.requestFocus();
-                                if (documento != miP.getDni_p())
-                                {
-                                                    JOptionPane.showMessageDialog(rootPane, "El Paciente no Existe en el Registro","Registrar", WIDTH);
-                                                    RegistrarPaciente reg = new RegistrarPaciente(documento);
-                                                    reg.setVisible(true);
-                                    /**try {
-                                                miP.InsertarPaciente(documento);
-                                                miT.InsertarTutor(dni_tutor);
-                                    } catch (SQLException ex) {
-                                                Logger.getLogger(RegPac.class.getName()).log(Level.SEVERE, null, ex);
-                                    }**/
-                                }
-                                else{
-                                            JOptionPane.showMessageDialog(rootPane, "El Paciente ya Existe en el Registro","Registrado", WIDTH);
-                                        }   
+    boolean bandera=false;
+    Pacientes miP = new Pacientes();
+    if (jRadioButton1.isSelected())
+    {   
+        int documento = 0;
+        
+        documento= Integer.parseInt(this.jTFIngresarPaciente.getText());
+        this.jTFIngresarPaciente.setText("");
+        this.jTFIngresarPaciente.requestFocus();
+        try {
+            bandera=miP.BuscarDNI(documento);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(RegPac.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (!bandera)
+        {
+            JOptionPane.showMessageDialog(rootPane, "El Paciente no Existe en el Registro","Registrar", WIDTH);
+            RegistrarPaciente reg = new RegistrarPaciente(documento);
+            reg.setVisible(true);
+            
+        }
+        else{
+            JOptionPane.showMessageDialog(rootPane, "El Paciente ya Existe en el Registro","Registrado", WIDTH);
+        }
     }    
     else{
-                         String nya = this.jTFIngresarPaciente.getText();
-                         JOptionPane.showMessageDialog(rootPane, "El Paciente no Existe en el Registro","Registrar", WIDTH);
-                         RegistrarPaciente2 reg2 = new RegistrarPaciente2(nya);
-                         reg2.setVisible(true);   
+            if (jRadioButton2.isSelected())
+            {
+                        
+                String AyN= jTFIngresarPaciente.getText();
+                int x= AyN.indexOf(",");
+                String Apellido =AyN.substring(0, x);
+                String Nombre = AyN.substring(x+2, AyN.length());
+                try {
+                    bandera=miP.BuscarNombre(Apellido, Nombre);
+                    if(bandera)
+                        {JOptionPane.showMessageDialog(rootPane, "El Paciente ya Existe en el Registro","Registrado", WIDTH);}
+                    else
+                        {JOptionPane.showMessageDialog(rootPane, "El Paciente no Existe en el Registro","Registrar", WIDTH);
+                        RegistrarPaciente reg = new RegistrarPaciente(Nombre, Apellido);
+                        reg.setVisible(true);}
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(RegPac.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                
+                         
+            }
+                            
                          
     }
    
@@ -229,6 +260,7 @@ private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN
     private javax.swing.JButton jBBuscar;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JRadioButton jRadioButton1;

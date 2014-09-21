@@ -10,6 +10,8 @@
  */
 package menu;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -62,7 +64,7 @@ public class menu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("D:\\UNSE\\LSI\\3º Año\\Sistema de Información I\\TP3\\imagenes hospital\\nueva.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\kachy\\Documents\\NetBeansProjects\\GestionGuardias\\nueva.png")); // NOI18N
         jLabel2.setText("jLabel2");
 
         jMenuBar1.setBackground(new java.awt.Color(255, 0, 0));
@@ -238,8 +240,10 @@ public class menu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1)
-            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1046, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 892, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -285,8 +289,12 @@ private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
 private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
 
-    CrearGuardia cg = new CrearGuardia();
-    cg.setVisible(true);
+        try {
+            CrearGuardiaMedica cg = new CrearGuardiaMedica();
+            cg.setVisible(true);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
 }//GEN-LAST:event_jMenuItem6ActionPerformed
 
 private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed

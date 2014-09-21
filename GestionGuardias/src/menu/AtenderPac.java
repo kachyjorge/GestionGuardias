@@ -10,9 +10,11 @@
  */
 package menu;
 
-import ClasesBD.Conexion;
-import ClasesBD.Pacientes;
+
+import ClasesBD.*;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 import javax.swing.JOptionPane;
@@ -22,13 +24,12 @@ import javax.swing.JOptionPane;
  * @author admin
  */
 public class AtenderPac extends javax.swing.JFrame {
-private int dni_p;
-private int dni_tutor;
+   
+    
     /** Creates new form AtenderPac */
     public AtenderPac() {
         initComponents();
-      //  grupo1.add(jRadioButton1);
-      //  grupo1.add(jRadioButton2);
+      
     }
 
     /** This method is called from within the constructor to
@@ -43,7 +44,7 @@ private int dni_tutor;
         grupo1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTDNI = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -73,17 +74,18 @@ private int dni_tutor;
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(101, 101, 101)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 111, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,22 +93,22 @@ private int dni_tutor;
                 .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(56, 56, 56))
+                    .addComponent(jTDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,22 +123,43 @@ private int dni_tutor;
 
 private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-    Pacientes bPasiente = new Pacientes(dni_p, null, null, null, null, null, null, null, dni_tutor);
     
-    int documento= Integer.parseInt(this.jTextField1.getText());
-    this.jTextField1.setText("");
-    this.jTextField1.requestFocus();
-    if (documento != bPasiente.getDni_p()){
-                    //JOptionPane.showMessageDialog(rootPane, "El Paciente esta Registrado","Mensaje", WIDTH);
-                    AtenderPaciente app = new AtenderPaciente();
-                    app.setVisible(true);
+    boolean bandera = false;
+    Pacientes miP = new Pacientes();
+     
+    int documento = 0;
+        
+    documento= Integer.parseInt(this.jTDNI.getText());
+    this.jTDNI.setText("");
+    this.jTDNI.requestFocus();
+    try {
+          bandera = miP.BuscarDNI(documento);
+    } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AtenderPac.class.getName()).log(Level.SEVERE, null, ex);
     }
-    else{
-        JOptionPane.showMessageDialog(rootPane, "El Paciente No Existe, dar el alta al finalizar la atencion","Mensaje", WIDTH);
-        AtenderPaciente app = new AtenderPaciente();
-        app.setVisible(true);
-    }
+    if (!bandera)
+        {
+        try {
+            JOptionPane.showMessageDialog(rootPane, "El Paciente No Existe, dar el alta al finalizar la atencion","Registrar", WIDTH);
+            AtenderPaciente app = new AtenderPaciente();
+            app.setVisible(true);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AtenderPac.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+        }
+        else{
+        try {
+            JOptionPane.showMessageDialog(rootPane, "El Paciente esta Registrado","Registrado", WIDTH);
+            AtenderPaciente app = new AtenderPaciente();
+            app.setVisible(true);
+        }
+         catch (ClassNotFoundException ex) {
+            Logger.getLogger(AtenderPac.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }
     
+
 }//GEN-LAST:event_jButton1ActionPerformed
 
 private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -185,6 +208,8 @@ private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTDNI;
     // End of variables declaration//GEN-END:variables
+
+   
 }

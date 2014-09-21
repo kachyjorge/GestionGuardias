@@ -7,43 +7,35 @@
 package ClasesBD;
 
 import java.sql.*;
-//import java.sql.SQLException;
 
 /**
  *
  * @author kachy
  */
 public class Conexion {
-    Connection conexion; 
+    /**Connection conexion; 
     Statement sentencia;
     ResultSet rsDatos;
     PreparedStatement psPrepSencencias;
+    **/
     
-    
-    private int algo;
-    
-    public Conexion() throws SQLException, ClassNotFoundException 
+   
+    public static Connection Cadena() throws ClassNotFoundException, SQLException
     {
         // Esta Función Establece la Conexion
-        try {
+      //  try {
             Class.forName("com.mysql.jdbc.Driver"); 
-            String conStr = "jdbc:mysql://localhost:3306/guardia?zeroDateTimeBehavior=convertToNull";
-            
-            conexion=DriverManager.getConnection(conStr, "root", "root");
-            conexion.setAutoCommit(false); /* si no especifican esto el autocommit 
+            String conStr = "jdbc:mysql://localhost:3306/guardia_hospital?zeroDateTimeBehavior=convertToNull";
+                            
+            Connection cn=DriverManager.getConnection(conStr, "root", "root");
+            /**conexion.setAutoCommit(false); /* si no especifican esto el autocommit 
                                            es por defecto true entonces no es necesario
                                            hacer los commit despues de las insersiones,
                                            eliminaciones o modificaciones*/
-            sentencia=conexion.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            //sentencia=conexion.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             
-        } catch (ClassCastException e) {
-            
-            
-        }catch (SQLException e)
-        {
-            throw e;
-        }
-        }
+            return cn; 
     }
+}
 
 

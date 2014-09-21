@@ -16,30 +16,20 @@ public class Historia_Clinica {
 
     private int nro_consulta;
     private String fecha_atencion;
-    private int peso;
-    private int talle;
-    private int pacientes_dni_p;
-    private int internacion_cod_int;
-    private int patologias_cod_patologia;
-    private int medicos_cod_personal;
+    private String peso;
+    private String talle;
+    private String practicas;
+    private int dni_p;
+    private int cod_int;
+    private int cod_patologia;
+    private int cod_medico;
     
     Connection conexion; 
     Statement sentencia;
     ResultSet rsDatos;
     PreparedStatement psPrepSencencias;
-    
-    public Historia_Clinica(int nro_consulta, String fecha_atencion, int peso, int talle, int pacientes_dni_p, int internacion_cod_int, int patologias_cod_patologia, int medicos_cod_personal) {
-        this.nro_consulta = nro_consulta;
-        this.fecha_atencion = fecha_atencion;
-        this.peso = peso;
-        this.talle = talle;
-        this.pacientes_dni_p = pacientes_dni_p;
-        this.internacion_cod_int = internacion_cod_int;
-        this.patologias_cod_patologia = patologias_cod_patologia;
-        this.medicos_cod_personal = medicos_cod_personal;
-    }
-    
-     public int getNro_consulta() {
+
+    public int getNro_consulta() {
         return nro_consulta;
     }
 
@@ -55,68 +45,82 @@ public class Historia_Clinica {
         this.fecha_atencion = fecha_atencion;
     }
 
-    public int getPeso() {
+    public String getPeso() {
         return peso;
     }
 
-    public void setPeso(int peso) {
+    public void setPeso(String peso) {
         this.peso = peso;
     }
 
-    public int getTalle() {
+    public String getTalle() {
         return talle;
     }
 
-    public void setTalle(int talle) {
+    public void setTalle(String talle) {
         this.talle = talle;
     }
 
-    public int getPacientes_dni_p() {
-        return pacientes_dni_p;
+    public String getPracticas() {
+        return practicas;
     }
 
-    public void setPacientes_dni_p(int pacientes_dni_p) {
-        this.pacientes_dni_p = pacientes_dni_p;
+    public void setPracticas(String practicas) {
+        this.practicas = practicas;
     }
 
-    public int getInternacion_cod_int() {
-        return internacion_cod_int;
+    public int getDni_p() {
+        return dni_p;
     }
 
-    public void setInternacion_cod_int(int internacion_cod_int) {
-        this.internacion_cod_int = internacion_cod_int;
+    public void setDni_p(int dni_p) {
+        this.dni_p = dni_p;
     }
 
-    public int getPatologias_cod_patologia() {
-        return patologias_cod_patologia;
+    public int getCod_int() {
+        return cod_int;
     }
 
-    public void setPatologias_cod_patologia(int patologias_cod_patologia) {
-        this.patologias_cod_patologia = patologias_cod_patologia;
+    public void setCod_int(int cod_int) {
+        this.cod_int = cod_int;
     }
 
-    public int getMedicos_cod_personal() {
-        return medicos_cod_personal;
+    public int getCod_patologia() {
+        return cod_patologia;
     }
 
-    public void setMedicos_cod_personal(int medicos_cod_personal) {
-        this.medicos_cod_personal = medicos_cod_personal;
+    public void setCod_patologia(int cod_patologia) {
+        this.cod_patologia = cod_patologia;
     }
 
+    public int getCod_medico() {
+        return cod_medico;
+    }
 
+    public void setCod_medico(int cod_medico) {
+        this.cod_medico = cod_medico;
+    }
+    
+    
+    
 
-public int Cargar_Historia_Clinica (String peso, String talla, String diagnostico, String patologia, String f_ingreso, String practica, String medico) throws SQLException
-    {
+    public int Cargar_Historia_Clinica () throws SQLException
+        {
         // Inserta un contacto y devuelve su id 
-        try{
+         try{
             // preparo la sentencia el parametro RETURN_GENERATED_KEYS debe ser especificado explicitamente
             // para poder obtener el ID del campo autoincrement
-            psPrepSencencias = conexion.prepareStatement("INSERT INTO historia_clinica (nro_consulta, fecha_atencion, peso, talla) VALUES (?,?,?,?);", PreparedStatement.RETURN_GENERATED_KEYS);
+            psPrepSencencias = conexion.prepareStatement("INSERT INTO historia_clinica (fecha_atencion, peso, talle, practicas, dni_p, cod_int, cod_patologia, cod_medico) VALUES (?,?,?,?,?,?,?,?);",
+                                                            PreparedStatement.RETURN_GENERATED_KEYS);
             // cargo parametros
-            //psPrepSencencias.setString(1, Nombre);
-            psPrepSencencias.setString(2, f_ingreso);
-            psPrepSencencias.setString(3, peso);
-            psPrepSencencias.setString(4, talla);
+            psPrepSencencias.setString(1, fecha_atencion);
+            psPrepSencencias.setString(2, peso);
+            psPrepSencencias.setString(3, talle);
+            psPrepSencencias.setString(4, practicas);
+            psPrepSencencias.setInt(5, dni_p);
+            psPrepSencencias.setInt(6, cod_int);
+            psPrepSencencias.setInt(7, cod_patologia);
+            psPrepSencencias.setInt(8, cod_medico);
             
             //rpta = ps.executeUpdate() == 1;
             //ejecuto sentencia

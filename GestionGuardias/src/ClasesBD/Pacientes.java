@@ -6,36 +6,40 @@
 
 package ClasesBD;
 
-import static java.awt.image.ImageObserver.WIDTH;
+
 import java.sql.*;
-import javax.swing.JOptionPane;
-import menu.RegistrarPaciente;
-//import menu.RegistrarPaciente;
-//import ClasesBD.Conexion;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author kachy
  */
 public class Pacientes {
 
+    
     private int dni_p;
     private String nombre_pac;
     private String apellido_pac;
     private String domicilio_pac;
     private String localidad;
-    private Date fecha;
+    private String fecha;
     private String sexo;
     private String obra_social;
-    private int tutores_dni_tutor;
+    private int nro_afiliado;
+    private int dni_tutor;
   
-    Connection conexion; 
+    private Statement sentencia;
+    private PreparedStatement psPrepSencencias;
+    private ResultSet rsDatos;
+    
+/**    Connection conexion; 
     Statement sentencia;
     ResultSet rsDatos;
-    PreparedStatement psPrepSencencias;
- 
-    RegistrarPaciente reg = new RegistrarPaciente();
     
-    public Pacientes(int dni_p, String nombre_pac, String apellido_pac, String domicilio_pac, String localidad, Date fecha, String sexo, String obra_social, int tutores_dni_tutor) {
+    
+    
+    public Pacientes(int dni_p, String nombre_pac, String apellido_pac, String domicilio_pac, String localidad, String fecha, String sexo, String obra_social, int nro_afiliado, int tutores_dni_tutor) throws ClassNotFoundException, SQLException {
         this.dni_p = dni_p;
         this.nombre_pac = nombre_pac;
         this.apellido_pac = apellido_pac;
@@ -44,7 +48,28 @@ public class Pacientes {
         this.fecha = fecha;
         this.sexo = sexo;
         this.obra_social = obra_social;
+        this.nro_afiliado = nro_afiliado;
         this.tutores_dni_tutor = tutores_dni_tutor;
+        
+        
+    }    **/
+
+   
+
+    public int getDni_tutor() {
+        return dni_tutor;
+    }
+
+    public void setDni_tutor(int dni_tutor) {
+        this.dni_tutor = dni_tutor;
+    }
+
+    public int getNro_afiliado() {
+        return nro_afiliado;
+    }
+
+    public void setNro_afiliado(int nro_afiliado) {
+        this.nro_afiliado = nro_afiliado;
     }
     
     public void setApellido_pac(String apellido_pac) {
@@ -59,7 +84,7 @@ public class Pacientes {
         this.localidad = localidad;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
@@ -72,7 +97,7 @@ public class Pacientes {
     }
 
     public void setTutores_dni_tutor(int tutores_dni_tutor) {
-        this.tutores_dni_tutor = tutores_dni_tutor;
+        this.dni_tutor = tutores_dni_tutor;
     }
 
     public String getApellido_pac() {
@@ -87,7 +112,7 @@ public class Pacientes {
         return localidad;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
@@ -100,7 +125,7 @@ public class Pacientes {
     }
 
     public int getTutores_dni_tutor() {
-        return tutores_dni_tutor;
+        return dni_tutor;
     }
  
     public int getDni_p() {
@@ -120,115 +145,90 @@ public class Pacientes {
     }
 
   
-    public int cargar(int dni_p, String nombre_pac, String apellido_pac, String domicilio_pac, String localidad, String fecha, String sexo, String obra_social, int nro_afiliado) throws SQLException{
-    
-        PreparedStatement pst = conexion.prepareStatement("INSERT INTO pacientes (dni_p, nombre_pac, apellido_pac,domicilio_pac, localidad, fecha, sexo, Obra_social, nro_afiliado) VALUES (?,?,?,?,?,?,?,?,?)");
+    public void cargarPaciente() throws SQLException, ClassNotFoundException{
+          
+        
         //PreparedStatement pstt = conexion.prepareStatement("INSERT INTO tutores (dni_tutor, nombre_t, apellido_t,tel_t) VALUES (?,?,?,?)");
     
         try{
-            
-            pst.setInt(1, dni_p);
-            pst.setString(2, nombre_pac);
-            pst.setString(3, apellido_pac);
-            pst.setString(4, domicilio_pac);
-            pst.setString(5, localidad);
-            pst.setString(6, fecha);
-            pst.setString(7, sexo);
-            pst.setString(8, obra_social);
-            //pstt.setString(9, jTdnit.getText());
-            pst.setInt(9, nro_afiliado);
-                        
-            pst.executeUpdate();
-            
-            rsDatos = psPrepSencencias.getGeneratedKeys();
-            rsDatos.first();
-            return rsDatos.getInt(1);
-            
-        }catch(SQLException e) {
-            throw e;
-        }           
+            Connection cn = Conexion.Cadena();
+            psPrepSencencias = cn.prepareStatement("INSERT INTO pacientes (dni_p, nombre_pac, apellido_pac,domicilio_pac, localidad, fecha, sexo, Obra_social, nro_afiliado, dni_tutor) VALUES (?,?,?,?,?,?,?,?,?,?)",
+                                                          PreparedStatement.RETURN_GENERATED_KEYS);
            
-       }
-    }
-
-
-
-
-
-  /**Inser
-     * @throws java.lang.Exceptiont**/
-
-/** public boolean insertar(Pacientes objPacientes) throws Exception{
-boolean rpta = false;
-Connection con = null;
-PreparedStatement ps = null;
-try {
-    if (objPacientes != null) 
-    {
-        
-        String sql = "INSERT INTO Pacientes (dni_p, nombre_pac, apellido_pac, "
-                + "domicilio_pac, localidad, fecha, sexo, Obra_social, tutores_dni_tutor)"
-                + " VALUES (?,?,?,?,?,?,?,?,?);";
-        ps = con.prepareStatement(sql);
-        ps.setInt(1,objPacientes.getDni_p());
-        ps.setString(2,objPacientes.getNombre_pac());
-        ps.setString(3,objPacientes.getApellido_pac());
-        ps.setString(4,objPacientes.getDomicilio_pac());
-        ps.setString(5,objPacientes.getLocalidad());
-        ps.setDate(6,objPacientes.getFecha());
-        ps.setString(7,objPacientes.getSexo());
-        ps.setString(8,objPacientes.getObra_social());
-        ps.setInt(9,objPacientes.getTutores_dni_tutor());
-        rpta = ps.executeUpdate() == 1;
-    }
-} catch (Exception e) 
-{
-    e.printStackTrace();
-} finally {
-try {
-        ps.close();
-        con.close();
-    } catch (Exception e) 
-    {
-        e.printStackTrace();
-    }
-}
-return rpta;
-}
-     * @param DNI 
-    
-    
-    public int InsertarPaciente (int DNI) throws SQLException
-    {
-        // Inserta un contacto y devuelve su id 
-        try{
-            // preparo la sentencia el parametro RETURN_GENERATED_KEYS debe ser especificado explicitamente
-            // para poder obtener el ID del campo autoincrement
-            psPrepSencencias = conexion.prepareStatement("INSERT INTO pacientes (dni_p, nombre_pac, apellido_pac, "
-                                                        + "domicilio_pac, localidad, fecha, sexo, Obra_social, tutores_dni_tutor)"
-                                                        + " VALUES (?,?,?,?,?,?,?,?,?);",
-                                                        PreparedStatement.RETURN_GENERATED_KEYS);
-            // cargo parametros
-            //psPrepSencencias.setString(1, Nombre);
-            psPrepSencencias.setInt(1, getDni_p());
-            psPrepSencencias.setString(2, getNombre_pac());
-            psPrepSencencias.setString(3, getApellido_pac());
-            psPrepSencencias.setString(4, getDomicilio_pac());
-            psPrepSencencias.setString(5, getLocalidad());
-            psPrepSencencias.setDate(6, getFecha());
-            psPrepSencencias.setString(7, getSexo());
-            psPrepSencencias.setString(8, getObra_social());
-            psPrepSencencias.setInt(9, getTutores_dni_tutor());
-            //rpta = ps.executeUpdate() == 1;
-            //ejecuto sentencia
+            psPrepSencencias.setInt(1, dni_p);
+            psPrepSencencias.setString(2, nombre_pac);
+            psPrepSencencias.setString(3, apellido_pac);
+            psPrepSencencias.setString(4, domicilio_pac);
+            psPrepSencencias.setString(5, localidad);
+            psPrepSencencias.setString(6, fecha);
+            psPrepSencencias.setString(7, sexo);
+            psPrepSencencias.setString(8, obra_social);
+            psPrepSencencias.setInt(9, nro_afiliado);
+            psPrepSencencias.setInt(10, dni_tutor);
+                        
             psPrepSencencias.executeUpdate();
-            //obtengo el id del registro recien insertado
-            rsDatos = psPrepSencencias.getGeneratedKeys();
-            rsDatos.first();
-            return rsDatos.getInt(1);
+         
+            //rsDatos.first();
+       
+            //return rsDatos.getInt(1);
+        
             
         }catch(SQLException e) {
             throw e;
-        }           **/
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Tutores.class.getName()).log(Level.SEVERE, null, ex);
+        }              
+    }
+    
+    
+  
+    
+    public boolean BuscarDNI(int dni) throws ClassNotFoundException
+    {
+        boolean band=false;
+        try {
+            Connection cn = Conexion.Cadena();
         
-   
+            sentencia=cn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            
+            rsDatos = sentencia.executeQuery("select * from pacientes where dni_p = "+ dni +";");
+            
+            while (rsDatos.next()) 
+            {
+                band=true;
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Pacientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return band;
+    }
+    
+    public boolean BuscarNombre(String A, String N) throws ClassNotFoundException
+    {
+        boolean band=false;
+        try {
+            Connection cn = Conexion.Cadena();
+        
+            sentencia=cn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            String sent="select * from pacientes where nombre_pac = '"+ N +"' and apellido_pac= '"+ A +"';";
+            System.out.println(sent);
+            rsDatos = sentencia.executeQuery(sent);
+            
+            while (rsDatos.next()) 
+            {
+                band=true;
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Pacientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return band;
+    }
+    
+  }   
+
+    
+
+
+

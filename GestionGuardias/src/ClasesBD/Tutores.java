@@ -6,13 +6,9 @@
 
 package ClasesBD;
 
-//import java.sql.Connection;
 import java.sql.*;
-//import java.sql.PreparedStatement;
-//import java.sql.ResultSet;
-//import java.sql.SQLException;
-//import java.sql.Statement;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -25,17 +21,21 @@ public class Tutores {
     private String apellido_t;
     private int tel_t;
     
-    Connection conexion; 
-    Statement sentencia;
-    ResultSet rsDatos;
-    PreparedStatement psPrepSencencias;
+    int dni_t = 0;
+    String nomb, apellido;
+    int tel = 0;
     
-    public Tutores(int dni_tutor, String nombre_t, String apellido_t, int tel_t) {
+    //private Statement sentencia;
+    private ResultSet rsDatos;
+    private PreparedStatement psPrepSencencias;
+    
+    /**public Tutores(int dni_tutor, String nombre_t, String apellido_t, int tel_t) {
         this.dni_tutor = dni_tutor;
         this.nombre_t = nombre_t;
         this.apellido_t = apellido_t;
         this.tel_t = tel_t;
     }
+**/
     
     public int getDni_tutor() {
         return dni_tutor;
@@ -69,31 +69,34 @@ public class Tutores {
         this.tel_t = tel_t;
     }
 
-    public int InsertarTutor (int dni_tutor, String nombre_t, String apellido_t, int tel_t) throws SQLException
+    public void InsertarTutor () throws SQLException
     {
+       
         // Inserta un contacto y devuelve su id 
         try{
+            Connection cn = Conexion.Cadena();
             // preparo la sentencia el parametro RETURN_GENERATED_KEYS debe ser especificado explicitamente
             // para poder obtener el ID del campo autoincrement
-            psPrepSencencias = conexion.prepareStatement("INSERT INTO tutores (dni_tutor, nombre_t, apellido_t, tel_t)" + " VALUES (?,?,?,?);",
-                                                        PreparedStatement.RETURN_GENERATED_KEYS);
+            psPrepSencencias = cn.prepareStatement("INSERT INTO tutores ( dni_tutor, nombre_t, apellido_t, tel_t)" + " VALUES (?,?,?,?);");
+                                                       // PreparedStatement.RETURN_GENERATED_KEYS);
             // cargo parametros
-            //psPrepSencencias.setString(1, Nombre);
+            
             psPrepSencencias.setInt(1, dni_tutor);
             psPrepSencencias.setString(2, nombre_t);
             psPrepSencencias.setString(3, apellido_t);
             psPrepSencencias.setInt(4, tel_t);
-            //rpta = ps.executeUpdate() == 1;
+           
             //ejecuto sentencia
             psPrepSencencias.executeUpdate();
-            //obtengo el id del registro recien insertado
-            rsDatos = psPrepSencencias.getGeneratedKeys();
-            rsDatos.first();
-            return rsDatos.getInt(1);
-            
+          
         }catch(SQLException e) {
             throw e;
-        }           
-        
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Tutores.class.getName()).log(Level.SEVERE, null, ex);
+       }           
+    
     }
-}
+  }
+
+    
+
