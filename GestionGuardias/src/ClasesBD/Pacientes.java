@@ -33,28 +33,7 @@ public class Pacientes {
     private PreparedStatement psPrepSencencias;
     private ResultSet rsDatos;
     
-/**    Connection conexion; 
-    Statement sentencia;
-    ResultSet rsDatos;
-    
-    
-    
-    public Pacientes(int dni_p, String nombre_pac, String apellido_pac, String domicilio_pac, String localidad, String fecha, String sexo, String obra_social, int nro_afiliado, int tutores_dni_tutor) throws ClassNotFoundException, SQLException {
-        this.dni_p = dni_p;
-        this.nombre_pac = nombre_pac;
-        this.apellido_pac = apellido_pac;
-        this.domicilio_pac = domicilio_pac;
-        this.localidad = localidad;
-        this.fecha = fecha;
-        this.sexo = sexo;
-        this.obra_social = obra_social;
-        this.nro_afiliado = nro_afiliado;
-        this.tutores_dni_tutor = tutores_dni_tutor;
-        
-        
-    }    **/
 
-   
 
     public int getDni_tutor() {
         return dni_tutor;
@@ -152,8 +131,8 @@ public class Pacientes {
     
         try{
             Connection cn = Conexion.Cadena();
-            psPrepSencencias = cn.prepareStatement("INSERT INTO pacientes (dni_p, nombre_pac, apellido_pac,domicilio_pac, localidad, fecha, sexo, Obra_social, nro_afiliado, dni_tutor) VALUES (?,?,?,?,?,?,?,?,?,?)",
-                                                          PreparedStatement.RETURN_GENERATED_KEYS);
+            psPrepSencencias = cn.prepareStatement("INSERT INTO pacientes (dni_p, nombre_pac, apellido_pac,domicilio_pac, localidad, fecha, sexo, Obra_social, nro_afiliado, dni_tutor) VALUES (?,?,?,?,?,?,?,?,?,?)");
+                                                          //PreparedStatement.RETURN_GENERATED_KEYS);
            
             psPrepSencencias.setInt(1, dni_p);
             psPrepSencencias.setString(2, nombre_pac);
@@ -176,7 +155,7 @@ public class Pacientes {
         }catch(SQLException e) {
             throw e;
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Tutores.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Pacientes.class.getName()).log(Level.SEVERE, null, ex);
         }              
     }
     
@@ -204,6 +183,27 @@ public class Pacientes {
         return band;
     }
     
+    public String BuscarNom_Ape(int dni) throws ClassNotFoundException
+    {
+        String Nombre = "";
+        try {
+            Connection cn = Conexion.Cadena();
+        
+            sentencia=cn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            
+            rsDatos = sentencia.executeQuery("select * from pacientes where dni_p = "+ dni +";");
+            
+            while (rsDatos.next()) 
+            {
+                Nombre = rsDatos.getString(3)+ ", " + rsDatos.getString(2);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Pacientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return Nombre;
+    }
+    
     public boolean BuscarNombre(String A, String N) throws ClassNotFoundException
     {
         boolean band=false;
@@ -212,7 +212,7 @@ public class Pacientes {
         
             sentencia=cn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             String sent="select * from pacientes where nombre_pac = '"+ N +"' and apellido_pac= '"+ A +"';";
-            System.out.println(sent);
+            
             rsDatos = sentencia.executeQuery(sent);
             
             while (rsDatos.next()) 

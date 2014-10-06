@@ -19,7 +19,7 @@ import javax.swing.DefaultListModel;
 
 /**
  *
- * @author admin
+ * @author kachy
  */
 public class CrearGuardiaMedica extends javax.swing.JFrame {
 
@@ -56,7 +56,7 @@ public class CrearGuardiaMedica extends javax.swing.JFrame {
                 String ape = rsDatos.getString("apellido_med");
                 int cod = rsDatos.getInt("cod_medico");
                 String elemento = cod + "- " + ape +", "+ nom;
-                this.jCBNom_medico.addItem(elemento);
+                this.jCBNom_medico2.addItem(elemento);
                 
             }
             
@@ -101,12 +101,12 @@ public class CrearGuardiaMedica extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jCBNom_medico = new javax.swing.JComboBox();
-        jPanel4 = new javax.swing.JPanel();
-        jBtnRegistrarMedico = new javax.swing.JButton();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jCBNom_medico2 = new javax.swing.JComboBox();
+        jPanel10 = new javax.swing.JPanel();
+        jBtnRegistrarMedico2 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jListMedicos = new javax.swing.JList();
         jPanel7 = new javax.swing.JPanel();
@@ -137,41 +137,41 @@ public class CrearGuardiaMedica extends javax.swing.JFrame {
 
         jLabel1.setText("Fecha");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Medico"));
+        jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder("Medico"));
 
-        jLabel3.setText("medicos");
+        jLabel5.setText("medicos");
 
-        jLabel7.setText("Nombre Medico");
+        jLabel11.setText("Nombre Medico");
 
-        jCBNom_medico.addActionListener(new java.awt.event.ActionListener() {
+        jCBNom_medico2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCBNom_medicoActionPerformed(evt);
             }
         });
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel10.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jBtnRegistrarMedico.setText("Alta Medico");
-        jBtnRegistrarMedico.addActionListener(new java.awt.event.ActionListener() {
+        jBtnRegistrarMedico2.setText("Alta Medico");
+        jBtnRegistrarMedico2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnRegistrarMedicoActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jBtnRegistrarMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jBtnRegistrarMedico2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jBtnRegistrarMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jBtnRegistrarMedico2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(47, Short.MAX_VALUE))
         );
 
@@ -216,43 +216,43 @@ public class CrearGuardiaMedica extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(33, 33, 33)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCBNom_medico, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCBNom_medico2, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel11Layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCBNom_medico, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCBNom_medico2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel11Layout.createSequentialGroup()
                                 .addGap(9, 9, 9)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel11Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
         );
@@ -426,7 +426,7 @@ public class CrearGuardiaMedica extends javax.swing.JFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 667, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(118, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -437,7 +437,7 @@ public class CrearGuardiaMedica extends javax.swing.JFrame {
                     .addComponent(dateFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(26, 26, 26)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -465,22 +465,46 @@ public class CrearGuardiaMedica extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 726, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 714, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 675, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jCBH_desdeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBH_desdeActionPerformed
 
-    this.dispose();
-}//GEN-LAST:event_jButton2ActionPerformed
+        int posicion = jCBH_desde.getSelectedIndex();
 
-private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        switch (posicion)
+        {
+            case 1:
+            jCBH_hasta.removeAllItems();
+            jCBH_hasta.addItem("14:00 Hs");
+
+            break;
+
+            case 2:
+            jCBH_hasta.removeAllItems();
+            jCBH_hasta.addItem("22:00 Hs");
+            break;
+
+            case 3:
+            jCBH_hasta.removeAllItems();
+            jCBH_hasta.addItem("06:00 Hs");
+            break;
+        }
+    }//GEN-LAST:event_jCBH_desdeActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         try {
             String elemento ;
@@ -489,60 +513,102 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             gua.setFecha_g(dateFecha.getText());
             gua.setHora_desde(jCBH_desde.getSelectedItem().toString());
             gua.setHora_hasta(jCBH_hasta.getSelectedItem().toString());
-            
+
             gua.InsertarGuardia();
-            
+
             jListMedicos.setSelectedIndex(0);
             while (!jListMedicos.isSelectionEmpty())
-                {
-                    elemento = (String) jListMedicos.getSelectedValue();
-                    int x = elemento.indexOf("-");
-                    String y = elemento.substring(0, x);
-                
-                    Guardia_Medica gm = new Guardia_Medica();
-                    gm.setFecha_g(dateFecha.getText());
-                    gm.setHora_desde(jCBH_desde.getSelectedItem().toString());
-                    gm.setCod_medico(Integer.parseInt(y));
-                    gm.InsertarGuardiaMedico();
-                
-                    DefaultListModel modeloLista5 = (DefaultListModel)jListMedicos.getModel();
-                    modeloLista5.removeElementAt(0);
-                    jListMedicos.setModel(modeloLista5);
-                    jListMedicos.setSelectedIndex(0);
-                }
-            
+            {
+                elemento = (String) jListMedicos.getSelectedValue();
+                int x = elemento.indexOf("-");
+                String y = elemento.substring(0, x);
+
+                Guardia_Medica gm = new Guardia_Medica();
+                gm.setFecha_g(dateFecha.getText());
+                gm.setHora_desde(jCBH_desde.getSelectedItem().toString());
+                gm.setCod_medico(Integer.parseInt(y));
+                gm.InsertarGuardiaMedico();
+
+                DefaultListModel modeloLista5 = (DefaultListModel)jListMedicos.getModel();
+                modeloLista5.removeElementAt(0);
+                jListMedicos.setModel(modeloLista5);
+                jListMedicos.setSelectedIndex(0);
+            }
+
             jListEnfermero.setSelectedIndex(0);
             while (!jListEnfermero.isSelectionEmpty())
-                {
-                    elemen = (String) jListEnfermero.getSelectedValue();
-                    int x = elemen.indexOf("-");
-                    String y = elemen.substring(0, x);
-                
-                    Guardia_Enfermero ge = new Guardia_Enfermero();
-                    ge.setFecha_g(dateFecha.getText());
-                    ge.setHora_desde(jCBH_desde.getSelectedItem().toString());
-                    ge.setCod_enfermero(Integer.parseInt(y));
-                    ge.InsertarGuardiaEnfermero();
-                
-                    DefaultListModel modeloLista5 = (DefaultListModel)jListEnfermero.getModel();
-                    modeloLista5.removeElementAt(0);
-                    jListEnfermero.setModel(modeloLista5);
-                    jListEnfermero.setSelectedIndex(0);
-                }
-           
+            {
+                elemen = (String) jListEnfermero.getSelectedValue();
+                int x = elemen.indexOf("-");
+                String y = elemen.substring(0, x);
+
+                Guardia_Enfermero ge = new Guardia_Enfermero();
+                ge.setFecha_g(dateFecha.getText());
+                ge.setHora_desde(jCBH_desde.getSelectedItem().toString());
+                ge.setCod_enfermero(Integer.parseInt(y));
+                ge.InsertarGuardiaEnfermero();
+
+                DefaultListModel modeloLista5 = (DefaultListModel)jListEnfermero.getModel();
+                modeloLista5.removeElementAt(0);
+                jListEnfermero.setModel(modeloLista5);
+                jListEnfermero.setSelectedIndex(0);
+            }
+
             JOptionPane.showMessageDialog(rootPane, "Los Datos se Guardaron CORRECTAMENTE","Guardado", WIDTH);
             modeloLista.clear();
             modeloLista1.clear();
+            jCBNom_Enferemero.setSelectedIndex(-1);
+            jCBNom_medico2.setSelectedIndex(-1);
             jCBH_desde.setSelectedIndex(-1);
+            jCBH_hasta.setSelectedIndex(-1);
         } catch (SQLException ex) {
             Logger.getLogger(CrearGuardiaMedica.class.getName()).log(Level.SEVERE, null, ex);
         }
-}//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jCBNom_medicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBNom_medicoActionPerformed
-        
-        
-    }//GEN-LAST:event_jCBNom_medicoActionPerformed
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+
+        modeloLista1.addElement(jCBNom_Enferemero.getSelectedItem().toString());
+        jCBNom_Enferemero.removeItem(jCBNom_Enferemero.getSelectedItem());
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBorrarActionPerformed
+
+        if (jCBNom_Enferemero.getSelectedIndex()>=0){
+            modeloLista1.removeElementAt(jCBNom_Enferemero.getSelectedIndex());
+        }
+    }//GEN-LAST:event_jBorrarActionPerformed
+
+    private void jBtnRegistrarEnfermeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnRegistrarEnfermeroActionPerformed
+
+        CargarEnfermero ce = new CargarEnfermero();
+        ce.setVisible(true);
+    }//GEN-LAST:event_jBtnRegistrarEnfermeroActionPerformed
+
+    private void jCBNom_EnferemeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBNom_EnferemeroActionPerformed
+
+    }//GEN-LAST:event_jCBNom_EnferemeroActionPerformed
+
+    private void jBtnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnBorrarActionPerformed
+
+        if (!jListMedicos.isSelectionEmpty()){
+            DefaultListModel modeloLista5 = (DefaultListModel)jListMedicos.getModel();
+            modeloLista5.removeElementAt(jListMedicos.getSelectedIndex());
+            jListMedicos.setModel(modeloLista5);
+
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(rootPane, "No hay Medicos en Lista", "Mensaje", WIDTH);
+        }
+    }//GEN-LAST:event_jBtnBorrarActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+
+        //jTCargo.setText(jCBNom_medico.getSelectedItem().toString());
+        modeloLista.addElement(jCBNom_medico.getSelectedItem().toString());
+        jCBNom_medico.removeItem(jCBNom_medico.getSelectedItem());
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jBtnRegistrarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnRegistrarMedicoActionPerformed
 
@@ -550,73 +616,9 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         cm.setVisible(true);
     }//GEN-LAST:event_jBtnRegistrarMedicoActionPerformed
 
-    private void jBtnRegistrarEnfermeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnRegistrarEnfermeroActionPerformed
-     
-        CargarEnfermero ce = new CargarEnfermero();
-        ce.setVisible(true);
-    }//GEN-LAST:event_jBtnRegistrarEnfermeroActionPerformed
+    private void jCBNom_medicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBNom_medicoActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
-        //jTCargo.setText(jCBNom_medico.getSelectedItem().toString());
-        modeloLista.addElement(jCBNom_medico.getSelectedItem().toString());
-        jCBNom_medico.removeItem(jCBNom_medico.getSelectedItem());
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jBtnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnBorrarActionPerformed
-        
-        if (!jListMedicos.isSelectionEmpty()){
-            DefaultListModel modeloLista5 = (DefaultListModel)jListMedicos.getModel();
-            modeloLista5.removeElementAt(jListMedicos.getSelectedIndex());
-            jListMedicos.setModel(modeloLista5);
-            
-        }
-        else
-            {System.out.println("No Hace Nada");}
-    }//GEN-LAST:event_jBtnBorrarActionPerformed
-
-    private void jCBNom_EnferemeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBNom_EnferemeroActionPerformed
-        
-      
-    }//GEN-LAST:event_jCBNom_EnferemeroActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        
-        modeloLista1.addElement(jCBNom_Enferemero.getSelectedItem().toString());
-        jCBNom_Enferemero.removeItem(jCBNom_Enferemero.getSelectedItem());
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBorrarActionPerformed
-        
-        if (jCBNom_Enferemero.getSelectedIndex()>=0){
-            modeloLista1.removeElementAt(jCBNom_Enferemero.getSelectedIndex());            
-        }
-    }//GEN-LAST:event_jBorrarActionPerformed
-
-    private void jCBH_desdeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBH_desdeActionPerformed
-      
-        int posicion = jCBH_desde.getSelectedIndex();
-        
-        switch (posicion)
-        {
-            case 1: 
-                //jCBH_desde.removeItem(jCBH_desde.getSelectedItem());
-                jCBH_hasta.removeAllItems();
-                jCBH_hasta.addItem("14:00 Hs");
-                
-                break;
-                
-            case 2: 
-                jCBH_hasta.removeAllItems();
-                jCBH_hasta.addItem("22:00 Hs");
-                break;    
-                
-            case 3: 
-                jCBH_hasta.removeAllItems();
-                jCBH_hasta.addItem("06:00 Hs");
-                break;    
-        }
-    }//GEN-LAST:event_jCBH_desdeActionPerformed
+    }//GEN-LAST:event_jCBNom_medicoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -663,6 +665,8 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private javax.swing.JButton jBtnBorrar;
     private javax.swing.JButton jBtnRegistrarEnfermero;
     private javax.swing.JButton jBtnRegistrarMedico;
+    private javax.swing.JButton jBtnRegistrarMedico1;
+    private javax.swing.JButton jBtnRegistrarMedico2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -671,21 +675,31 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private javax.swing.JComboBox jCBH_hasta;
     private javax.swing.JComboBox jCBNom_Enferemero;
     private javax.swing.JComboBox jCBNom_medico;
+    private javax.swing.JComboBox jCBNom_medico1;
+    private javax.swing.JComboBox jCBNom_medico2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JList jListEnfermero;
     private javax.swing.JList jListMedicos;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

@@ -71,7 +71,7 @@ public class Guardia_Medica {
         }catch(SQLException e) {
             throw e;
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Medicos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Guardia_Medica.class.getName()).log(Level.SEVERE, null, ex);
        }           
     }
     

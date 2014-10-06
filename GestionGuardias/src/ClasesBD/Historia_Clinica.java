@@ -6,6 +6,10 @@
 
 package ClasesBD;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author fdqc
@@ -104,38 +108,125 @@ public class Historia_Clinica {
     
     
 
-    public int Cargar_Historia_Clinica () throws SQLException
+    public void Cargar_Historia_Clinica () throws SQLException, ClassNotFoundException
         {
+         //int nro;   
         // Inserta un contacto y devuelve su id 
          try{
             // preparo la sentencia el parametro RETURN_GENERATED_KEYS debe ser especificado explicitamente
             // para poder obtener el ID del campo autoincrement
-            psPrepSencencias = conexion.prepareStatement("INSERT INTO historia_clinica (fecha_atencion, peso, talle, practicas, dni_p, cod_int, cod_patologia, cod_medico) VALUES (?,?,?,?,?,?,?,?);",
-                                                            PreparedStatement.RETURN_GENERATED_KEYS);
+               
+            Connection cn = Conexion.Cadena();
+            psPrepSencencias = cn.prepareStatement("INSERT INTO historia_clinica (nro_consulta, fecha_atencion, peso, talle, practicas, dni_p, cod_patologia, cod_medico) VALUES (?,?,?,?,?,?,?,?);");
+                                                           //PreparedStatement.RETURN_GENERATED_KEYS);
             // cargo parametros
-            psPrepSencencias.setString(1, fecha_atencion);
-            psPrepSencencias.setString(2, peso);
-            psPrepSencencias.setString(3, talle);
-            psPrepSencencias.setString(4, practicas);
-            psPrepSencencias.setInt(5, dni_p);
-            psPrepSencencias.setInt(6, cod_int);
+            psPrepSencencias.setInt(1, nro_consulta);
+            psPrepSencencias.setString(2, fecha_atencion);
+            psPrepSencencias.setString(3, peso);
+            psPrepSencencias.setString(4, talle);
+            psPrepSencencias.setString(5, practicas);
+            psPrepSencencias.setInt(6, dni_p);
             psPrepSencencias.setInt(7, cod_patologia);
             psPrepSencencias.setInt(8, cod_medico);
             
-            //rpta = ps.executeUpdate() == 1;
             //ejecuto sentencia
-            psPrepSencencias.executeUpdate();
+           psPrepSencencias.executeUpdate();
             //obtengo el id del registro recien insertado
-            rsDatos = psPrepSencencias.getGeneratedKeys();
-            rsDatos.first();
-            return rsDatos.getInt(1);
+            //rsDatos = psPrepSencencias.getGeneratedKeys();
+            //rsDatos.first();
+            //nro = rsDatos.getInt(1);
             
         }catch(SQLException e) {
             throw e;
-        }           
+        } 
+        //return nro; 
     }
 
 
+    public int buscarUltimo() throws SQLException{
+        int i=0;
+        try {
+            Connection cn = Conexion.Cadena();
+            
+            sentencia=cn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            rsDatos = sentencia.executeQuery("select * from historia_clinica;");
+            
+            while(rsDatos.next())
+            {
+                i = rsDatos.getInt(1);
+            }
+            i=i+1;
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Historia_Clinica.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return i;
+    }
+    
+    public int cargarTablaInformePac (JTable T, String fechaD, String fechaH) throws SQLException, ClassNotFoundException{
+       int i = 0;
+        try {
+            Connection cn = Conexion.Cadena();
+        
+            sentencia=cn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            DefaultTableModel modelo = (DefaultTableModel) T.getModel();
+            Object []objeto = new Object[10];
+            rsDatos = sentencia.executeQuery("select pacientes.apellido_pac, pacientes.nombre_pac, pacientes.dni_p, pacientes.domicilio_pac, pacientes.fecha, historia_clinica.fecha_atencion, historia_clinica.talle, historia_clinica.peso, patologias.descripcion, medicos.apellido_med, medicos.nombre_med\n" +
+                                            "from pacientes inner join historia_clinica on pacientes.dni_p = historia_clinica.dni_p\n" +
+                                            "inner join patologias on historia_clinica.cod_patologia = patologias.cod_patologia\n" +
+                                            "inner join medicos on historia_clinica.cod_medico = medicos.cod_medico\n" +
+                                            "where historia_clinica.fecha_atencion >= '" + fechaD + "' and historia_clinica.fecha_atencion <= '" + fechaH + "';");
+                                            
+            while (rsDatos.next()) 
+            {
+                objeto[0]= rsDatos.getString(1);
+                objeto[1]= rsDatos.getString(2); 
+                objeto[2]= rsDatos.getInt(3);
+                objeto[3]= rsDatos.getString(4);
+                objeto[4]= rsDatos.getString(5);
+                objeto[5]= rsDatos.getString(6);
+                objeto[6]= rsDatos.getString(7);
+                objeto[7]= rsDatos.getString(8);
+                objeto[8]= rsDatos.getString(9);
+                objeto[9]= rsDatos.getString(10)+ ", " + rsDatos.getString(11);
+               
+                modelo.addRow(objeto);
+                i++;
+            }
+            T.setModel(modelo);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Internacion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return i;
+    }
 
+    
+    public int cargarT_InformePrac (JTable T, String Practica, String fechaD, String fechaH) throws SQLException, ClassNotFoundException{
+        int i = 0;
+        try {
+            Connection cn = Conexion.Cadena();
+        
+            sentencia=cn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            DefaultTableModel modelo = (DefaultTableModel) T.getModel();
+            Object []objeto = new Object[10];
+            rsDatos = sentencia.executeQuery("select historia_clinica.practicas from historia_clinica where historia_clinica.practicas = '" + Practica + "' and historia_clinica.fecha_atencion >= '" + fechaD + "' and historia_clinica.fecha_atencion <= '" + fechaH + "' ;");
+                                            
+            while (rsDatos.next()) 
+            {
+                objeto[0]= rsDatos.getString(1);
+                
+                modelo.addRow(objeto);
+                i++;
+            }
+            T.setModel(modelo);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Internacion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return i;
+    }
 
+    
+          
 }

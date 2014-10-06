@@ -64,8 +64,8 @@ public class menu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\kachy\\Documents\\NetBeansProjects\\GestionGuardias\\nueva.png")); // NOI18N
-        jLabel2.setText("jLabel2");
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\kachy\\Documents\\NetBeansProjects\\GestionGuardias\\GestionGuardias\\src\\menu\\nueva.png")); // NOI18N
+        jLabel2.setDisabledIcon(new javax.swing.ImageIcon("D:\\UNSE\\LSI\\3º Año\\Sistema de Información I\\TP3\\imagenes hospital\\Sin título.png")); // NOI18N
 
         jMenuBar1.setBackground(new java.awt.Color(255, 0, 0));
 
@@ -241,7 +241,7 @@ public class menu extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 892, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 888, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1))
         );
@@ -271,8 +271,12 @@ private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
 private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
 
-    IngresarInternacion iipi = new IngresarInternacion();
-    iipi.setVisible(true);
+        try {
+            IngresarInternacion iipi = new IngresarInternacion();
+            iipi.setVisible(true);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
 }//GEN-LAST:event_jMenuItem3ActionPerformed
 
 private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
@@ -299,49 +303,49 @@ private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FI
 
 private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
 
-    InformeGuardia ig = new InformeGuardia();
+    InformeTurnoGuardia ig = new InformeTurnoGuardia();
     ig.setVisible(true);
 }//GEN-LAST:event_jMenuItem7ActionPerformed
 
 private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
 
-    InformePato ipa = new InformePato();
+    InformePatologia ipa = new InformePatologia();
     ipa.setVisible(true);
 }//GEN-LAST:event_jMenuItem8ActionPerformed
 
 private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
 
-    InformeMediSuministrado ims = new InformeMediSuministrado();
+    InformeMedicamentoSuministrado ims = new InformeMedicamentoSuministrado();
     ims.setVisible(true);
 }//GEN-LAST:event_jMenuItem9ActionPerformed
 
 private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
 
-    InformeCamas ic = new InformeCamas();
+    InformeCamaDisponible ic = new InformeCamaDisponible();
     ic.setVisible(true);
 }//GEN-LAST:event_jMenuItem10ActionPerformed
 
 private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
 
-    InformePacientesA ip =new InformePacientesA();
+    InformePacientesAtendidos ip =new InformePacientesAtendidos();
     ip.setVisible(true);
 }//GEN-LAST:event_jMenuItem11ActionPerformed
 
 private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
 
-    InformeC ic = new InformeC();
+    InformeCirugia ic = new InformeCirugia();
     ic.setVisible(true);
 }//GEN-LAST:event_jMenuItem12ActionPerformed
 
 private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
 
-    InformeTra itt = new InformeTra();
+    InformeTraumatologia itt = new InformeTraumatologia();
     itt.setVisible(true);
 }//GEN-LAST:event_jMenuItem13ActionPerformed
 
 private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
 
-    InformeInter iit = new InformeInter();
+    InformeInternación iit = new InformeInternación();
     iit.setVisible(true);
 }//GEN-LAST:event_jMenuItem14ActionPerformed
 
