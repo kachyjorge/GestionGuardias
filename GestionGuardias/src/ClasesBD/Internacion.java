@@ -232,7 +232,7 @@ public class Internacion {
         
             sentencia=cn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
                        
-            rsDatos = sentencia.executeQuery("select pacientes.nombre_pac, pacientes.apellido_pac from internacion inner join historia_clinica on internacion.nro_consulta = historia_clinica.nro_consulta inner join pacientes on historia_clinica.dni_p = pacientes.dni_p where pacientes.nombre_pac = '" + N + "' and pacientes.apellido_pac = '" + A + "';");
+            rsDatos = sentencia.executeQuery("select pacientes.nombre_pac, pacientes.apellido_pac from internacion inner join historia_clinica on internacion.nro_consulta = historia_clinica.nro_consulta inner join pacientes on historia_clinica.dni_p = pacientes.dni_p where pacientes.nombre_pac = '" + N + "' and pacientes.apellido_pac = '" + A + "' and internacion.fecha_alta = null;");
             while (rsDatos.next())
             {
                 band=true;
@@ -244,13 +244,13 @@ public class Internacion {
         return band;
     }
     
-    public void actualizarDatos(String fechaA, String motivo) throws SQLException{
+    public void actualizarDatos(String fechaA, String motivo, int cod_internacion) throws SQLException{
         
         try {
             Connection cn = Conexion.Cadena();
             
             sentencia=cn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            sentencia.execute("update internacion set internacion.fecha_alta = '" + fechaA + "', internacion.motivo = '" + motivo + "' where internacion.cod_int = 1;");
+            sentencia.execute("update internacion set internacion.fecha_alta = '" + fechaA + "', internacion.motivo = '" + motivo + "' where internacion.cod_int = " + cod_internacion + ";");
                                     
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Internacion.class.getName()).log(Level.SEVERE, null, ex);

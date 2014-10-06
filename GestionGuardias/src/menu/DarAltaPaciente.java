@@ -10,9 +10,7 @@
  */
 package menu;
 
-import ClasesBD.Camas;
-import ClasesBD.Conexion;
-import ClasesBD.Internacion;
+import ClasesBD.*;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,14 +27,17 @@ public class DarAltaPaciente extends javax.swing.JFrame {
     
     private int id;
     private int codigo_int;
-    private String nombr;
-    private String apellid;
+    private final String nombr;
+    private final String apellid;
     /** Creates new form DarAltaPaciente */
-    public DarAltaPaciente() {
-        initComponents();
-    }
-    
-   public DarAltaPaciente(String nombre, String apellido) throws ClassNotFoundException {
+   
+    /**
+     * Creates new form DarAltaPaciente
+     * @param nombre
+     * @param apellido
+     * @throws java.lang.ClassNotFoundException
+     */
+    public DarAltaPaciente(String nombre, String apellido) throws ClassNotFoundException {
         initComponents();
         this.jLNombre_Pac.setText("Paciente: " + apellido + ", " + nombre);
         nombr = nombre;
@@ -69,6 +70,10 @@ public class DarAltaPaciente extends javax.swing.JFrame {
             Logger.getLogger(IngresarPacienteInternación.class.getName()).log(Level.SEVERE, null, ex);
         } 
                 
+    }
+
+    private DarAltaPaciente() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /** This method is called from within the constructor to
@@ -266,7 +271,7 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     Internacion inter = new Internacion();
     Camas cam = new Camas();
     try {
-            inter.actualizarDatos(date.getText(), jTMotivo.getText());
+            inter.actualizarDatos(date.getText(), jTMotivo.getText(), codigo_int);
             cam.actualizarEstado(0, id);
             JOptionPane.showMessageDialog(rootPane, "Los Datos se Guardaron CORRECTAMENTE","Guardado", WIDTH);
             InformeAltaPaciente iap = new InformeAltaPaciente(nombr, apellid);
@@ -306,11 +311,8 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-
-            public void run() {
-                new DarAltaPaciente().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new DarAltaPaciente().setVisible(true);
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

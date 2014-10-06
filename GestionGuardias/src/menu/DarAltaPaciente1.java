@@ -189,11 +189,8 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-
-            public void run() {
-                new DarAltaPaciente1().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new DarAltaPaciente1().setVisible(true);
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
