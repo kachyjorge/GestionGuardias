@@ -121,6 +121,7 @@
         <Component class="javax.swing.JTextField" name="jTFIngresarPaciente">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTFIngresarPacienteActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTFIngresarPacienteKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="jRadioButton2">

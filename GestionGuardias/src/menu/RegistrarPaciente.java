@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author admin
+ * @author kachy
  */
 public class RegistrarPaciente extends javax.swing.JFrame {
 
@@ -117,6 +117,11 @@ public class RegistrarPaciente extends javax.swing.JFrame {
                 jTnum_AfiliadoActionPerformed(evt);
             }
         });
+        jTnum_Afiliado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTnum_AfiliadoKeyTyped(evt);
+            }
+        });
 
         jLNAfiliado.setText("Nº Afiliado");
 
@@ -141,6 +146,24 @@ public class RegistrarPaciente extends javax.swing.JFrame {
 
         jLabel4.setText("Apellido");
 
+        jTnombre_tutor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTnombre_tutorKeyTyped(evt);
+            }
+        });
+
+        jTApellido_tutor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTApellido_tutorKeyTyped(evt);
+            }
+        });
+
+        jTtelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTtelefonoKeyTyped(evt);
+            }
+        });
+
         btnBuscar.setText("Guardar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -161,6 +184,12 @@ public class RegistrarPaciente extends javax.swing.JFrame {
 
         jLabel12.setText("Nombre Tutor");
 
+        jTdnit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTdnitKeyTyped(evt);
+            }
+        });
+
         jLabel15.setText("dni tutor");
 
         jTDni.setEnabled(false);
@@ -178,25 +207,27 @@ public class RegistrarPaciente extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTApellido_tutor, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTtelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(249, Short.MAX_VALUE))
-                            .addComponent(jTnombre_tutor)))
+                        .addComponent(jTnombre_tutor, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(141, 141, 141))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTApellido_tutor, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(249, 249, 249))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTtelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(311, 311, 311))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(96, 96, 96)
                         .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(170, 170, 170)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap())))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,8 +263,8 @@ public class RegistrarPaciente extends javax.swing.JFrame {
                             .addComponent(jTnum_Afiliado, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jCBLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -321,13 +352,11 @@ public class RegistrarPaciente extends javax.swing.JFrame {
 
 private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
 
-    //dni_t = 0;
     try {
             // TODO add your handling code here:
             
             Tutores tu = new Tutores();
-            
-            
+          
             tu.setDni_tutor(Integer.parseInt(jTdnit.getText()));
             tu.setNombre_t(jTnombre_tutor.getText());
             tu.setApellido_t(jTApellido_tutor.getText());
@@ -340,26 +369,18 @@ private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             pac.setDomicilio_pac(jTDomicilio.getText());
             pac.setLocalidad(jCBLocalidad.getSelectedItem().toString());
             pac.setFecha(jFechaNac.getText());
-            //pac.setFecha(jCBfechadia.getSelectedItem().toString() + jCBfechaMes.getSelectedItem().toString() + jCBfechaAño.getSelectedItem().toString());
             pac.setSexo(jCBSexo.getSelectedItem().toString());
             pac.setObra_social(jCBObraSocial.getSelectedItem().toString());
             pac.setNro_afiliado(Integer.parseInt(jTnum_Afiliado.getText()));
             pac.setDni_tutor(Integer.parseInt(jTdnit.getText()));
-            
-            //dni_t = tu.InsertarTutor();
+        
             tu.InsertarTutor();
-            
-            
-                
+                           
             pac.cargarPaciente();
-            
-           
-            
-        } catch (SQLException ex) {
+    
+        } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(RegistrarPaciente.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-           Logger.getLogger(RegistrarPaciente.class.getName()).log(Level.SEVERE, null, ex);
-       }
+        }
     	
                          
     JOptionPane.showMessageDialog(rootPane, "El Registro del Paciente se Genero CORRECTAMENTE", "Guardado", WIDTH);
@@ -386,15 +407,52 @@ private void jCBLocalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
           
         if (os.equals("No"))
         {
-            jTnum_Afiliado.setText("0");
+            jTnum_Afiliado.setText("");
+            jTnum_Afiliado.setText("-");
             jTnum_Afiliado.setEnabled(false);
             jLNAfiliado.setEnabled(false);
         }else{
+                jTnum_Afiliado.setText("");
                 jTnum_Afiliado.setEnabled(true);
                 jLNAfiliado.setEnabled(true);
         }
     
     }//GEN-LAST:event_jCBObraSocialActionPerformed
+
+    private void jTnum_AfiliadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTnum_AfiliadoKeyTyped
+        
+        char c = evt.getKeyChar();
+        if (c < '0' || c > '9')
+            evt.consume();
+    }//GEN-LAST:event_jTnum_AfiliadoKeyTyped
+
+    private void jTdnitKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTdnitKeyTyped
+        
+        char c = evt.getKeyChar();
+        if (c < '0' || c > '9')
+            evt.consume();
+    }//GEN-LAST:event_jTdnitKeyTyped
+
+    private void jTnombre_tutorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTnombre_tutorKeyTyped
+        
+        char c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z'))
+            evt.consume();
+    }//GEN-LAST:event_jTnombre_tutorKeyTyped
+
+    private void jTApellido_tutorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTApellido_tutorKeyTyped
+        
+        char c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z'))
+            evt.consume();
+    }//GEN-LAST:event_jTApellido_tutorKeyTyped
+
+    private void jTtelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTtelefonoKeyTyped
+        
+        char c = evt.getKeyChar();
+        if (c < '0' || c > '9')
+            evt.consume();
+    }//GEN-LAST:event_jTtelefonoKeyTyped
 
     /**
      * @param args the command line arguments

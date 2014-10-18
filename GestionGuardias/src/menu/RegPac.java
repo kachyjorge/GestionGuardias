@@ -13,9 +13,6 @@ package menu;
 import ClasesBD.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-//import java.sql.*;
-//import java.util.logging.Level;
-//import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -61,6 +58,11 @@ public class RegPac extends javax.swing.JFrame {
         jTFIngresarPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFIngresarPacienteActionPerformed(evt);
+            }
+        });
+        jTFIngresarPaciente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFIngresarPacienteKeyTyped(evt);
             }
         });
 
@@ -165,7 +167,6 @@ private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     {   
         
         int documento = 0;
-        
         documento= Integer.parseInt(this.jTFIngresarPaciente.getText());
         this.jTFIngresarPaciente.setText("");
         this.jTFIngresarPaciente.requestFocus();
@@ -188,6 +189,7 @@ private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     else{
             if (jRadioButton2.isSelected())
             {
+                
                 String AyN= jTFIngresarPaciente.getText();
                 int x= AyN.indexOf(",");
                 String Apellido =AyN.substring(0, x);
@@ -203,11 +205,8 @@ private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(RegPac.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                
-                
-                         
-            }
-                            
+                                        
+            }            
                          
     }
    
@@ -221,6 +220,26 @@ private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN
     private void jTFIngresarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFIngresarPacienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFIngresarPacienteActionPerformed
+
+    private void jTFIngresarPacienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFIngresarPacienteKeyTyped
+        
+        char c = evt.getKeyChar();
+        if(jRadioButton1.isSelected())
+        {
+            if(c < '0' || c > '9')
+                evt.consume();
+            
+        }
+        else{
+            
+            if(jRadioButton2.isSelected())
+            {
+            if((c < 'a' || c > 'z') && (c < 'A' || c > 'Z'))
+                evt.consume();
+            
+            }
+        }
+    }//GEN-LAST:event_jTFIngresarPacienteKeyTyped
 
     /**
      * @param args the command line arguments

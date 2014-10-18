@@ -69,7 +69,31 @@ public class CargarEnfermero extends javax.swing.JFrame {
 
         jLabel6.setText("Direccion");
 
-        jBtnAtras.setText("Atras");
+        jTC_Enf.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTC_EnfKeyTyped(evt);
+            }
+        });
+
+        jTFuncion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFuncionKeyTyped(evt);
+            }
+        });
+
+        jTNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTNombreKeyTyped(evt);
+            }
+        });
+
+        jTApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTApellidoKeyTyped(evt);
+            }
+        });
+
+        jBtnAtras.setText("Salir");
         jBtnAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnAtrasActionPerformed(evt);
@@ -174,6 +198,14 @@ public class CargarEnfermero extends javax.swing.JFrame {
     private void jBtnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAtrasActionPerformed
 
         this.dispose();
+        
+        try {
+                CrearGuardiaMedica crear = new CrearGuardiaMedica();
+                crear.dispose();
+        } catch (ClassNotFoundException ex) {
+                Logger.getLogger(CargarEnfermero.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
     }//GEN-LAST:event_jBtnAtrasActionPerformed
 
     private void jBtnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnGuardarActionPerformed
@@ -205,6 +237,34 @@ public class CargarEnfermero extends javax.swing.JFrame {
         jTDireccion.setText("");
         jTC_Enf.requestFocus();
     }//GEN-LAST:event_jBtnNuevoActionPerformed
+
+    private void jTC_EnfKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTC_EnfKeyTyped
+        
+        char c = evt.getKeyChar();
+        if (c < '0' || c > '9')
+            evt.consume();
+    }//GEN-LAST:event_jTC_EnfKeyTyped
+
+    private void jTFuncionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFuncionKeyTyped
+        
+        char c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z'))
+            evt.consume();
+    }//GEN-LAST:event_jTFuncionKeyTyped
+
+    private void jTNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTNombreKeyTyped
+        
+        char c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z'))
+            evt.consume();
+    }//GEN-LAST:event_jTNombreKeyTyped
+
+    private void jTApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTApellidoKeyTyped
+        
+        char c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z'))
+            evt.consume();
+    }//GEN-LAST:event_jTApellidoKeyTyped
 
     /**
      * @param args the command line arguments

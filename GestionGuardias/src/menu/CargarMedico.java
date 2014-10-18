@@ -77,7 +77,31 @@ public class CargarMedico extends javax.swing.JFrame {
 
         jLabel6.setText("Direccion");
 
-        jBtnAtras.setText("Atras");
+        jTC_Med.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTC_MedKeyTyped(evt);
+            }
+        });
+
+        jTEspecialidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTEspecialidadKeyTyped(evt);
+            }
+        });
+
+        jTNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTNombreKeyTyped(evt);
+            }
+        });
+
+        jTApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTApellidoKeyTyped(evt);
+            }
+        });
+
+        jBtnAtras.setText("Salir");
         jBtnAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnAtrasActionPerformed(evt);
@@ -216,6 +240,15 @@ public class CargarMedico extends javax.swing.JFrame {
     private void jBtnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAtrasActionPerformed
         
         this.dispose();
+        
+        try {
+           CrearGuardiaMedica crear = new CrearGuardiaMedica();
+           crear.dispose();
+           
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(CargarMedico.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_jBtnAtrasActionPerformed
 
     private void jBtnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnNuevoActionPerformed
@@ -228,6 +261,34 @@ public class CargarMedico extends javax.swing.JFrame {
         jTDireccion.setText("");
         jTC_Med.requestFocus();
     }//GEN-LAST:event_jBtnNuevoActionPerformed
+
+    private void jTC_MedKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTC_MedKeyTyped
+        
+        char c = evt.getKeyChar();
+        if (c < '0' || c > '9')
+            evt.consume();
+    }//GEN-LAST:event_jTC_MedKeyTyped
+
+    private void jTEspecialidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTEspecialidadKeyTyped
+        
+        char c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z'))
+            evt.consume();
+    }//GEN-LAST:event_jTEspecialidadKeyTyped
+
+    private void jTNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTNombreKeyTyped
+        
+        char c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z'))
+            evt.consume();
+    }//GEN-LAST:event_jTNombreKeyTyped
+
+    private void jTApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTApellidoKeyTyped
+        
+        char c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z'))
+            evt.consume();
+    }//GEN-LAST:event_jTApellidoKeyTyped
 
     /**
      * @param args the command line arguments

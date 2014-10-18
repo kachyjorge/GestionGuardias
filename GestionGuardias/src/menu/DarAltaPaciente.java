@@ -130,6 +130,12 @@ public class DarAltaPaciente extends javax.swing.JFrame {
 
         jLabel4.setText("Motivo de Alta");
 
+        jTMotivo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTMotivoKeyTyped(evt);
+            }
+        });
+
         jLabel5.setText("Nombre Medico");
 
         jLabel9.setText("Codigo Cama");
@@ -282,6 +288,13 @@ private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
   
 }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTMotivoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTMotivoKeyTyped
+        
+        char c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z'))
+            evt.consume();
+    }//GEN-LAST:event_jTMotivoKeyTyped
 
     /**
      * @param args the command line arguments

@@ -154,18 +154,30 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTC_Enf">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTC_EnfKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jTFuncion">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTFuncionKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jTNombre">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTNombreKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jTApellido">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTApellidoKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jTDireccion">
         </Component>
         <Component class="javax.swing.JButton" name="jBtnAtras">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Atras"/>
+            <Property name="text" type="java.lang.String" value="Salir"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnAtrasActionPerformed"/>

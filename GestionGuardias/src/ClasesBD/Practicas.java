@@ -15,10 +15,7 @@ public class Practicas {
     private int cod_practica;
     private String Nombre_prac;
     
-public Practicas(int cod_practica, String Nombre_prac) {
-        this.cod_practica = cod_practica;
-        this.Nombre_prac = Nombre_prac;
-    }
+
     
     public int getCod_practica() {
         return cod_practica;

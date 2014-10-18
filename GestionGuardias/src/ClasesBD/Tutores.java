@@ -26,17 +26,8 @@ public class Tutores {
     int tel = 0;
     
     //private Statement sentencia;
-    private ResultSet rsDatos;
     private PreparedStatement psPrepSencencias;
-    
-    /**public Tutores(int dni_tutor, String nombre_t, String apellido_t, int tel_t) {
-        this.dni_tutor = dni_tutor;
-        this.nombre_t = nombre_t;
-        this.apellido_t = apellido_t;
-        this.tel_t = tel_t;
-    }
-**/
-    
+            
     public int getDni_tutor() {
         return dni_tutor;
     }

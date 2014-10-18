@@ -56,30 +56,30 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="jLabel14" alignment="0" max="32767" attributes="1"/>
-                              <Component id="jLabel13" alignment="0" max="32767" attributes="1"/>
-                              <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="1"/>
-                          </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="jLabel12" pref="109" max="32767" attributes="1"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jTApellido_tutor" alignment="0" min="-2" pref="234" max="-2" attributes="0"/>
-                                      <Component id="jTtelefono" alignment="0" min="-2" pref="167" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace pref="249" max="32767" attributes="0"/>
-                              </Group>
-                              <Component id="jTnombre_tutor" max="32767" attributes="1"/>
-                          </Group>
+                          <Component id="jTnombre_tutor" min="-2" pref="299" max="-2" attributes="1"/>
+                          <EmptySpace min="-2" pref="141" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabel13" max="32767" attributes="1"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jTApellido_tutor" min="-2" pref="191" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="249" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabel14" max="32767" attributes="1"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jTtelefono" min="-2" pref="129" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="311" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
                           <Component id="btnBuscar" min="-2" pref="92" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="170" max="-2" attributes="0"/>
                           <Component id="jButton2" min="-2" pref="92" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -125,8 +125,8 @@
                               <Component id="jTnum_Afiliado" alignment="0" min="-2" pref="166" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="1">
                                   <Component id="jCBLocalidad" min="-2" pref="120" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jLabel7" min="-2" pref="98" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="jLabel7" min="-2" pref="106" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jFechaNac" min="-2" pref="81" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -263,6 +263,7 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTnum_AfiliadoActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTnum_AfiliadoKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLNAfiliado">
@@ -346,10 +347,19 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTnombre_tutor">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTnombre_tutorKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jTApellido_tutor">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTApellido_tutorKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jTtelefono">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTtelefonoKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnBuscar">
           <Properties>
@@ -383,6 +393,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTdnit">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTdnitKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel15">
           <Properties>
